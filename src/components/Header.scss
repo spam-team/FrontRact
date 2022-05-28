@@ -1,0 +1,35 @@
+.Header{
+    //display: flex;
+    .logo{
+        max-height: 100px;
+        width: auto;
+    }
+    .name{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        align-items: center;
+    }
+    .nav-link{
+        color: white;
+    }
+    .navbar-toggler{
+        background-color: ivory;
+    }
+    .navbar-toggler-icon{
+        width: 100%;
+    height: 100%;
+    img{
+        height: 31px;
+    }}
+}
+
+@media screen and(max-width: 991px){
+    .Header{
+        //display: flex;
+        .name{
+            display: none;
+        }
+    }
+
+}

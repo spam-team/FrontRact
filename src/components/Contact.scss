@@ -1,0 +1,23 @@
+.ContactPage{
+  color: white;
+
+  .mail{
+    color: #FFF967;
+  }.phone{
+    color: #EB8DA9;
+  }.tg{
+    color: #78CDC3;
+  }
+  .title{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and(max-width: 991px){
+  .ContactPage{
+    .MePng{
+      width: 100%;
+    }
+  }
+}

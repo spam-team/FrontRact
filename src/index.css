@@ -1,0 +1,38 @@
+html,body {
+  width: 100%;
+  height: 100%;
+  background: black;
+  /*background: #000000;*/
+  /*background: url("image/Rectangle.png");*/
+}
+#root{
+  width: 100%;
+  height: 100%;
+
+}
+.fonS{background: #404040;
+width: 100%;
+height: 100%}
+.App{
+  width: 100%;
+  height: 100%;
+}
+.CardFon{
+  background-image: url("image/Rectangle.svg");
+  background-size: cover;
+  /*background: url("image/Rectangle.svg");*/
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media screen and (max-width: 991px){
+.CardFon{
+  background: black;
+  background-image: inherit;
+}
+}

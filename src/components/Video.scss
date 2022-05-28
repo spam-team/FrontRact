@@ -1,0 +1,42 @@
+
+.ComponentRender{
+    font-family: 'Acme', sans-serif;
+    color: #FFFFFF;
+    h1{
+        color: #FFFFFF;
+    }
+    ul{
+        padding-left: inherit;
+        li span{
+            padding-bottom: initial;
+
+        color: #A4A4A4;
+        font-size: 20px;
+        line-height: 28px;
+    }}
+    video{
+        border: 3px solid rgba(255, 255, 255, 0.6);
+        border-radius: 30px;
+    }
+    .VideoPas{
+        width: inherit!important;
+        height: inherit!important;
+    }
+    .angry_percentActiv{
+        color: #FF7A00;
+    }
+    .happy_percentActiv{
+        color: #78CDC3;
+    }
+    .neutral_percentActiv{
+        color: #CD64FF;
+    }
+    .sad_percentActiv{
+    color: #EB8DA9;
+    }
+    .surprise_percentActiv{
+        color: #FFF967;
+    }
+}
+
+
