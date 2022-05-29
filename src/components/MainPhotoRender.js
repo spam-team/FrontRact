@@ -39,12 +39,17 @@ export function MainPhoto () {
     NamberWarlus(item)
 
     async function ClickXY(idx) {
-        let el = document.getElementById('el');
+        let el = document.getElementById('modal_img');
         el.addEventListener('click', getClickXY, false);
         function getClickXY(event)
         {
             var clickX = (event.layerX == undefined ? event.offsetX : event.layerX) + 1;
             var clickY = (event.layerY == undefined ? event.offsetY : event.layerY) + 1;
+
+            let img = document.getElementById('modal_img');
+            clickX /= img.width;
+            clickY /= img.height;
+
             const XY = {
                 "image_id": idx,
                 "X": clickX,
@@ -78,10 +83,10 @@ export function MainPhoto () {
                     <div className="modal-dialog modal-xl">
                         <div className="modal-content" style={{position: 'relative'}}>
                             <div style={{position: 'absolute', top: 10, right: 20, zIndex: 99999}}>
-                                <p id={"walrus_area_count"}></p>
+                                <p style={{color: 'black', fontSize:'30px'}} id={"walrus_area_count"}></p>
                             </div>
                             <div className="modal-body" onClick={() => ClickXY(idx)}>
-                                <img className="minimized" id="el" src={item.img}/>
+                                <img id="modal_img" className="minimized" src={item.img}/>
                             </div>
                         </div>
                     </div>
