@@ -138,10 +138,9 @@ export default class MultipleItems extends Component {
                                                     <Link to={`${item.id}`} key={item.id}>
                                             <div className="ImdConteiner">
                                             <img className="elemImg" src={item.img} />
-
                                                 <div className="butRel">
                                                     <button type="button"
-                                                            className="btn btn-outline-secondary">Secondary
+                                                            className="Open">Открыть
                                                     </button>
                                                 </div>
                                             </div>

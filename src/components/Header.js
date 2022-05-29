@@ -16,13 +16,13 @@ const Header = (props) => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" aria-current="page" href="/">Home</a>
+                                <a className="nav-link" aria-current="page" href="/">ГАЛЕРЕЯ</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/help">HELP</a>
+                                <a className="nav-link" href="/1">ФОТО</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/contact">Contact</a>
+                                <a className="nav-link" href="/help">ПОМОЩЬ</a>
                             </li>
                         </ul>
                     </div>

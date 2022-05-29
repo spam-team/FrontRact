@@ -6,9 +6,22 @@ import {Link} from "react-router-dom";
 async function NamberWarlus(props) {
     document.getElementsByClassName("walrus_count")[0].innerHTML = `${props.walrus_count}`;
 }
+async function ClickXY() {
+    var el = document.getElementById('el');
+    el.addEventListener('click', getClickXY, false);
+    function getClickXY(event)
+    {
+        var clickX = (event.layerX == undefined ? event.offsetX : event.layerX) + 1;
+        var clickY = (event.layerY == undefined ? event.offsetY : event.layerY) + 1;
+        console.log('Координаты клика: '+ clickX +' x '+ clickY);
+        const XY = [clickX, clickY]
+        console.log(XY)
+        return XY
+    }
+}
+
 export function MainPhoto () {
     const idx = parseInt(window.location.href.split('/')[3]);
-    console.log(idx)
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [item, setItems] = useState([]);
@@ -39,42 +52,62 @@ export function MainPhoto () {
         </div></div>;
     } else {
         return (
-            <div className="Video">
-                <img src={item.img}/>
+            <>
+            <div className="Video" type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <div className="relPPos">
+                <img className="minimized" src={item.img}/>
+                </div>
             </div>
+                <div className="modal fade" id="staticBackdrop" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div className="modal-dialog modal-xl">
+                        <div className="modal-content">
+                            <div className="modal-body">
+                                <img className="minimized" id="el" src={item.img}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
         );
     }
 }
 const MainPhotoRender = () => {
-    const idx = parseInt(window.location.href.split('/')[3]);
+
+    let idx = parseInt(window.location.href.split('/')[3]);
+    ClickXY()
     const left = idx - 1
     const right = idx + 1
     return(
         <div className="ComponentRender">
             <div className="row">
                 <div className="col-md-6">
+                    <div className="resDark">
                     <MainPhoto/>
-                    <div className="row">
+                        <img src="./image/lups.svg" className="lups"/>
+                    </div>
+                    <div className="row mt-5">
                         <div className="col">
-                            <Link to={left}>
-                            <button>фото {left}</button>
-                            </Link>
+                            <a href={left}>
+                                {left !== 0 &&
+                                <button className="sides">❮ фото {left}</button>
+                                }
+                            </a>
+
                         </div>
-                        <Link to={right}>
-                        <div className="col">
-                            <button>фото {right}</button>
+                        <div className="col right">
+                            <a href={right}>
+                            <button className="sides">фото {right} ❯</button>
+                            </a>
                         </div>
-                        </Link>
                     </div>
                 </div>
                 <div className="col-md-4 ps-3">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <h1>Interview {idx}</h1>
-                            <ul>
-                                <li><span>Количество моржей</span></li>
-                                <li><span className={"walrus_count"}></span></li>
-                            </ul>
+                    <div className="row">
+                        <div className="col-md-9">
+                            <h4>Фото №{idx}</h4>
+                            <h3>Количество моржей: </h3>
+                            <h2 className={"walrus_count"}></h2>
+
 
                             <div id="resultCard" className="card text-black text-center p-3 pb-0" style={{display: "none"}}>
                                 <h2 id="resultTitle">Everything cool</h2>
@@ -83,7 +116,7 @@ const MainPhotoRender = () => {
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div className="col-md-3">
                             <img className={"emotionImage"}/>
                         </div>
                     </div>

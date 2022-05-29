@@ -4,8 +4,8 @@ import Sliders from "../components/Sliders";
 const Main = () => {
     return (
         <>
-            <Header/>
         <div className="container">
+            <Header/>
             <Sliders/>
         </div>
             </>

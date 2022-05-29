@@ -7,8 +7,8 @@ const Card = () => {
     return (
         <div className="fonS">
         <div className="CardFon">
-        <Header/>
         <div className="container">
+            <Header/>
             <MainPhotoRender/>
         </div>
             </div>

@@ -1,6 +1,3 @@
-.HeaderNonde{
-    visibility: hidden;
-}
 .input__wrapper {
     width: 100%;
     position: relative;
@@ -62,29 +59,26 @@
 .relPos{
     position: relative;
     :after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);  opacity: 0; }
-
     :before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0; }
 
     :hover:before,
     :hover:after { opacity: 1; }
-
+    :hover .butRel{
+        display: inherit;
+    }
     .ImdConteiner {
     .elemImg{
     width: 100%;
     margin-bottom: 20px;
     height: 200px;
-        //:hover{
-        //    .butRel{
-        //        position: absolute;
-        //        top: 50%;
-        //        left: 50%;
-        //        transform: translate(-50%, -50%);
-        //
-        //    }
-        //}
 }
 }
+    .elemImg:hover .butRel{
+        display: none;
+    }
 .butRel{
+    z-index: 2000;
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -154,6 +148,28 @@
         color: white;
         margin-top: 20px;
     }
+}
+.Open{
+    z-index: 2000;
+    border: 3px solid #FFFFFF;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 41px;
+    border-radius: 9px;
+    background: inherit;
+    text-align: center;
+    color: white;
+}
+.Open:hover{
+    z-index: 2000;
+    border: 3px solid #FFFFFF;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 41px;
+    border-radius: 9px;
+    background: inherit;
+    text-align: center;
+    color: white;
 }
 @media screen and (max-width:600px){
 .gif img{

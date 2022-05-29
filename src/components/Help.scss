@@ -1,4 +1,23 @@
 .HelpComponent{
-  color: white;
-
+  background: white;
+  color: black;
+  padding: 30px;
+  font-family: 'Acme';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 41px;
+  ul{
+    padding: initial;
+  }
+  .pad{
+    padding-left: 50px;
+    padding-right: 50px;
+    span{
+      color: #FF0B53;
+    }
+    .blue{
+      color: #1658BC;;
+    }
+  }
 }

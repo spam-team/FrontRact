@@ -1,5 +1,15 @@
 .Header{
-    //display: flex;
+    margin-bottom: 50px;
+    font-family: 'Acme', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    .navbar-collapse{
+        justify-content: flex-end;
+    }
     .logo{
         max-height: 100px;
         width: auto;
