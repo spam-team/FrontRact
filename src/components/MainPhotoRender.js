@@ -1,24 +1,12 @@
 import "./MainPhoto.scss"
-import React, {useEffect, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 // const idx = parseInt(window.location.href.split('/')[3]);
 
 async function NamberWarlus(props) {
     document.getElementsByClassName("walrus_count")[0].innerHTML = `${props.walrus_count}`;
 }
-async function ClickXY() {
-    var el = document.getElementById('el');
-    el.addEventListener('click', getClickXY, false);
-    function getClickXY(event)
-    {
-        var clickX = (event.layerX == undefined ? event.offsetX : event.layerX) + 1;
-        var clickY = (event.layerY == undefined ? event.offsetY : event.layerY) + 1;
-        console.log('Координаты клика: '+ clickX +' x '+ clickY);
-        const XY = [clickX, clickY]
-        console.log(XY)
-        return XY
-    }
-}
+
 
 export function MainPhoto () {
     const idx = parseInt(window.location.href.split('/')[3]);
@@ -42,6 +30,20 @@ export function MainPhoto () {
             )
     }, [])
     NamberWarlus(item)
+
+    function ClickXY() {
+        let el = document.getElementById('el');
+        el.addEventListener('click', getClickXY, false);
+        function getClickXY(event)
+        {
+            var clickX = (event.layerX == undefined ? event.offsetX : event.layerX) + 1;
+            var clickY = (event.layerY == undefined ? event.offsetY : event.layerY) + 1;
+            const XY = [clickX, clickY]
+            // console.log(XY)
+            return XY
+        }
+    }
+
     if (error) {
         return <div><div className="gif">
             <img src="./image/morh.png" />
@@ -56,12 +58,13 @@ export function MainPhoto () {
             <div className="Video" type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <div className="relPPos">
                 <img className="minimized" src={item.img}/>
+                    <img src="./image/lups.svg" className="lups"/>
                 </div>
             </div>
                 <div className="modal fade" id="staticBackdrop" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div className="modal-dialog modal-xl">
                         <div className="modal-content">
-                            <div className="modal-body">
+                            <div className="modal-body" onClick={ClickXY}>
                                 <img className="minimized" id="el" src={item.img}/>
                             </div>
                         </div>
@@ -72,9 +75,7 @@ export function MainPhoto () {
     }
 }
 const MainPhotoRender = () => {
-
     let idx = parseInt(window.location.href.split('/')[3]);
-    ClickXY()
     const left = idx - 1
     const right = idx + 1
     return(
@@ -83,7 +84,6 @@ const MainPhotoRender = () => {
                 <div className="col-md-6">
                     <div className="resDark">
                     <MainPhoto/>
-                        <img src="./image/lups.svg" className="lups"/>
                     </div>
                     <div className="row mt-5">
                         <div className="col">

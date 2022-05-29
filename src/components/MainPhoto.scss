@@ -5,27 +5,35 @@
   .relPPos{
     display: flex;
     justify-content: space-around;
-
+    position: relative;
+    .lups{
+      position: absolute;
+      z-index: 2000;
+      display: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .relPPos:after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);  opacity: 0; }
+  .relPPos:before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;  opacity: 0; }
+  .relPPos:hover:before,
+  .relPPos:hover:after { opacity: 1; }
+  .relPPos:hover .lups{
+    display: inherit;
   }
 }
-.resDark{
-  display: block; position: relative; }
-.resDark:after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);  opacity: 0; }
-.resDark:before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;  opacity: 0; }
-.resDark:hover:before,
-.resDark:hover:after { opacity: 1; }
-.resDark:hover .lups{
-  display: inherit;
-}
+//.resDark{
+//  display: block; position: relative; }
+//.resDark:after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5);  opacity: 0; }
+//.resDark:before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;  opacity: 0; }
+//.resDark:hover:before,
+//.resDark:hover:after { opacity: 1; }
+//.resDark:hover .lups{
+//  display: inherit;
+//}
 
-.lups{
-  position: absolute;
-  z-index: 2000;
-  display: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 .sides{
   border: 2px solid #FFFFFF;
   border-radius: 9px;
