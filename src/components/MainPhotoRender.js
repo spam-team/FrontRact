@@ -6,7 +6,25 @@ import {Link} from "react-router-dom";
 async function NamberWarlus(props) {
     document.getElementsByClassName("walrus_count")[0].innerHTML = `${props.walrus_count}`;
 }
+async function XyPost(file) {
+    console.log(1)
 
+    const response = await fetch('http://192.168.0.21:8000/api/count_animals/', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify({file})
+    });
+
+    console.log(response)
+
+}
 
 export function MainPhoto () {
     const idx = parseInt(window.location.href.split('/')[3]);
@@ -31,16 +49,20 @@ export function MainPhoto () {
     }, [])
     NamberWarlus(item)
 
-    function ClickXY() {
+    async function ClickXY() {
         let el = document.getElementById('el');
         el.addEventListener('click', getClickXY, false);
         function getClickXY(event)
         {
             var clickX = (event.layerX == undefined ? event.offsetX : event.layerX) + 1;
             var clickY = (event.layerY == undefined ? event.offsetY : event.layerY) + 1;
-            const XY = [clickX, clickY]
-            // console.log(XY)
-            return XY
+            const XY = {
+                "X": clickX,
+                "Y": clickY,
+            }
+            // const XY = [clickX, clickY]
+            console.log(XY)
+            XyPost(XY)
         }
     }
 
@@ -107,18 +129,8 @@ const MainPhotoRender = () => {
                             <h4>Фото №{idx}</h4>
                             <h3>Количество моржей: </h3>
                             <h2 className={"walrus_count"}></h2>
-
-
-                            <div id="resultCard" className="card text-black text-center p-3 pb-0" style={{display: "none"}}>
-                                <h2 id="resultTitle">Everything cool</h2>
-                                <p id="resultDesc">The employee is happy to work.  You don't have to worry about his mental state.
-                                    Contact the employee to learn how to be happy.
-                                </p>
-                            </div>
                         </div>
-                        <div className="col-md-3">
-                            <img className={"emotionImage"}/>
-                        </div>
+
                     </div>
                 </div>
             </div>
