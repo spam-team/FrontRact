@@ -7,23 +7,12 @@ async function NamberWarlus(props) {
     document.getElementsByClassName("walrus_count")[0].innerHTML = `${props.walrus_count}`;
 }
 async function XyPost(file) {
-    console.log(1)
-
-    const response = await fetch('http://192.168.0.21:8000/api/count_animals/', {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow',
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify({file})
+    const response = await fetch(`http://192.168.0.21:8000/api/get_area/${file['image_id']}/${file['X']}/${file['Y']}`, {
     });
 
-    console.log(response)
+    const result = await response.json()
 
+    document.getElementById('walrus_area_count').innerHTML = result['count'];
 }
 
 export function MainPhoto () {
@@ -49,7 +38,7 @@ export function MainPhoto () {
     }, [])
     NamberWarlus(item)
 
-    async function ClickXY() {
+    async function ClickXY(idx) {
         let el = document.getElementById('el');
         el.addEventListener('click', getClickXY, false);
         function getClickXY(event)
@@ -57,9 +46,11 @@ export function MainPhoto () {
             var clickX = (event.layerX == undefined ? event.offsetX : event.layerX) + 1;
             var clickY = (event.layerY == undefined ? event.offsetY : event.layerY) + 1;
             const XY = {
+                "image_id": idx,
                 "X": clickX,
                 "Y": clickY,
             }
+
             // const XY = [clickX, clickY]
             console.log(XY)
             XyPost(XY)
@@ -85,8 +76,11 @@ export function MainPhoto () {
             </div>
                 <div className="modal fade" id="staticBackdrop" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div className="modal-dialog modal-xl">
-                        <div className="modal-content">
-                            <div className="modal-body" onClick={ClickXY}>
+                        <div className="modal-content" style={{position: 'relative'}}>
+                            <div style={{position: 'absolute', top: 10, right: 20, zIndex: 99999}}>
+                                <p id={"walrus_area_count"}></p>
+                            </div>
+                            <div className="modal-body" onClick={() => ClickXY(idx)}>
                                 <img className="minimized" id="el" src={item.img}/>
                             </div>
                         </div>

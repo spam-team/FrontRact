@@ -15,23 +15,6 @@ function getBase64(file) {
     };
 }
 
-async function processframe(frame) {
-    const frame_base64 = frame.substr(22);
-    const response = await fetch('http://172.28.73.204:9698/api/get_emotions/', {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow',
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify({img: frame_base64})
-    });
-    const result = await response.json();
-    console.log(result)
-}
 export default class MultipleItems extends Component {
     constructor(props) {
         super(props);
